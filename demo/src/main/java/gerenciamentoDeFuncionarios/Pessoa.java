@@ -34,9 +34,6 @@ public abstract class Pessoa {
   }
 
   public String toString() {
-    return "Nome: " 
-    + this.getNome() 
-    + "\tData de nascimento: " 
-    + this.getDataNascimento();
+    return "Nome: "  + this.getNome() + "\tData de nascimento: " + this.getDataNascimento();
   }
 }

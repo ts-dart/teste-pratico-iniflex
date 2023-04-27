@@ -8,27 +8,61 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Comparator;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class Principal {
   private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
 	private static Map<String, ArrayList<Funcionario>> funcionariosPorFuncao = new HashMap<>();
 
   public static void main( String[] args ) {
-    Principal.inserirTodosOsFuncionários();
-		Principal.removerOFuncionarioJoaoDaLista();
-		Principal.funcionariosReceberamAumentoDeSalárioDeDezPorCento();
-		Principal.agrupaOsFuncionariosPorFuncaoEmUmMAP();
-		System.out.println(Principal.funcionariosPorFuncao);
-		System.out.println(Principal.funcionariosQueFazemAniversarioNoMes10e12());
-		System.out.println(Principal.funcionarioComAMaiorIdade());
-		System.out.println(Principal.funcionariosPorOrdemAlfabetica());
-		System.out.println(Principal.totalDosSalariosDosFuncionarios());
-		System.out.println(Principal.quantosSalariosMinimosGanhaCadaFuncionario());
+		Principal.inserirTodosOsFuncionários();
 
-		//System.out.println(Principal.funcionarios);
+		Scanner scanner = new Scanner(System.in);
+		byte respCode = 0;
+		
+		do {
+			System.out.println("\n\n\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+      System.out.println("Entre com o número correspondente à opção desejada:");
+      System.out.println("1 - Remover o funcionário “João” da lista.");
+      System.out.println("2 - Os funcionários receberam 10% de aumento de salário.");
+			System.out.println("3 - Imprimir os funcionários, agrupados por função.");
+			System.out.println("4 - Imprimir os funcionários que fazem aniversário no mês 10 e 12.");
+			System.out.println("5 - Imprimir o funcionário com a maior idade.");
+			System.out.println("6 - Imprimir a lista de funcionários por ordem alfabética.");
+			System.out.println("7 - Imprimir o total dos salários dos funcionários.");
+			System.out.println("8 - Imprimir quantos salários mínimos ganha cada funcionário.");
+			System.out.println("9 - Imprimir todos os funcionários com todas suas informações.");
+			System.out.println("10 - Finalizar sistema.");
+			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			System.out.print("Sua resposta: ");
+      respCode = scanner.nextByte();
+
+			System.out.println("\nResultado:\n");
+			if (respCode == 1) {
+				Principal.removerOFuncionarioJoaoDaLista();
+				System.out.println("Funcionário João removido");
+			}
+			if (respCode == 2) {
+				Principal.funcionariosReceberamAumentoDeSalárioDeDezPorCento();
+				System.out.println("Todos os funcionários receberam 10% de aumento de salário");
+			}
+			if (respCode == 3) {
+				Principal.agrupaOsFuncionariosPorFuncaoEmUmMAP();
+				System.out.println(Principal.funcionariosPorFuncao);
+			}
+			if (respCode == 4) System.out.println(Principal.funcionariosQueFazemAniversarioNoMes10e12());
+			if (respCode == 5) System.out.println(Principal.funcionarioComAMaiorIdade());
+			if (respCode == 6) System.out.println(Principal.funcionariosPorOrdemAlfabetica());
+			if (respCode == 7) System.out.println(Principal.totalDosSalariosDosFuncionarios());
+			if (respCode == 8) System.out.println(Principal.quantosSalariosMinimosGanhaCadaFuncionario());
+			if (respCode == 9) System.out.println(Principal.funcionarios);
+			if (respCode == 10) System.out.println("Sistema finalizado.");
+    } while (respCode != 10);
+
+		scanner.close();
   }
 
-  static void inserirTodosOsFuncionários() {
+  public static void inserirTodosOsFuncionários() {
 		Principal.funcionarios.add(new Funcionario("Maria", "18/10/2000", new BigDecimal("2009.44"), "Operador"));
     Principal.funcionarios.add(new Funcionario("João", "12/05/1990", new BigDecimal("2284.38"), "Operador"));
     Principal.funcionarios.add(new Funcionario("Caio", "02/05/1961", new BigDecimal("9836.14"), "Coordenador"));
@@ -41,7 +75,7 @@ public class Principal {
     Principal.funcionarios.add(new Funcionario("Helena", "02/09/1996", new BigDecimal("2799.93"), "Gerente"));
   }
 
-	static void removerOFuncionarioJoaoDaLista() {
+	public static void removerOFuncionarioJoaoDaLista() {
 		for (int i = 0; i < Principal.funcionarios.size(); i++) {
 			if (Principal.funcionarios.get(i).getNome().equals("João")) {
 				Principal.funcionarios.remove(i);
@@ -49,7 +83,7 @@ public class Principal {
 		}
 	}
 
-	static void funcionariosReceberamAumentoDeSalárioDeDezPorCento() {
+	public static void funcionariosReceberamAumentoDeSalárioDeDezPorCento() {
 		for (Funcionario funcionario : Principal.funcionarios) {
 			Double novoSalario = new Double(funcionario.getSalario()
 				.replace(".", "").replace(",", ".")) * 1.1;
@@ -57,7 +91,8 @@ public class Principal {
 		}
 	}
 
-	static void agrupaOsFuncionariosPorFuncaoEmUmMAP() {
+	public static void agrupaOsFuncionariosPorFuncaoEmUmMAP() {
+		Principal.funcionariosPorFuncao.clear();
 		for (Funcionario i : Principal.funcionarios) {
 			String funcao = i.getFuncao();
 			if (!Principal.funcionariosPorFuncao.containsKey(funcao)) {
@@ -72,7 +107,7 @@ public class Principal {
 		}
 	}
 
-	static ArrayList<Funcionario> funcionariosQueFazemAniversarioNoMes10e12() {
+	public static ArrayList<Funcionario> funcionariosQueFazemAniversarioNoMes10e12() {
 		ArrayList<Funcionario> auxList = new ArrayList<>();
 		for (Funcionario funcionario : Principal.funcionarios) {
 			String mes = funcionario.getDataNascimento().split("/")[1];
@@ -83,7 +118,7 @@ public class Principal {
 		return auxList;
 	}
 
-	static String funcionarioComAMaiorIdade() {
+	public static String funcionarioComAMaiorIdade() {
 		int idade = LocalDate.now().getYear() 
 			- new Integer(Principal.funcionarios.get(0).getDataNascimento().split("/")[2]);
 		String nome = Principal.funcionarios.get(0).getNome();
@@ -98,18 +133,18 @@ public class Principal {
 		return "Nome: " + nome + ", " + "Idade: " + idade;
 	}
 
-	static ArrayList<Funcionario> funcionariosPorOrdemAlfabetica() {
-		ArrayList<Funcionario> listaOrdenada = Principal.funcionarios;
+	public static ArrayList<Funcionario> funcionariosPorOrdemAlfabetica() {
+		ArrayList<Funcionario> listaOrdenada = new ArrayList<>(Principal.funcionarios);
 		Comparator<Funcionario> comparador = new Comparator<Funcionario>() {
 			public int compare(Funcionario f1, Funcionario f2) {
 					return f1.getNome().compareTo(f2.getNome());
-			}
+			};
 		};
 		Collections.sort(listaOrdenada, comparador);
 		return listaOrdenada;
 	}
 
-	static String totalDosSalariosDosFuncionarios() {
+	public static String totalDosSalariosDosFuncionarios() {
 		Double totalSalario = 0.0;
 		for (Funcionario funcionario : Principal.funcionarios) {
 			totalSalario += new Double(funcionario.getSalario().replace(".", "").replace(",", "."));
@@ -118,7 +153,7 @@ public class Principal {
 			+ new DecimalFormat("#,##0.00").format(totalSalario);
 	}
 
-	static Map<String, String> quantosSalariosMinimosGanhaCadaFuncionario() {
+	public static Map<String, String> quantosSalariosMinimosGanhaCadaFuncionario() {
 		Map<String, String> funcionariosSalariosMinimos = new HashMap<>();
 		for (Funcionario funcionario : Principal.funcionarios) {
 			Double qtSalMin = new Double(funcionario.getSalario().replace(".", "").replace(",", "."))
