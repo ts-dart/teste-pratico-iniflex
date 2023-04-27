@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Principal {
-  	private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
+  private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
 	private static Map<String, ArrayList<Funcionario>> funcionariosPorFuncao = new HashMap<>();
 
  	public static void main( String[] args ) {
@@ -22,9 +22,9 @@ public class Principal {
 		
 		do {
 			System.out.println("\n\n\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-      		System.out.println("Entre com o número correspondente à opção desejada:");
-      		System.out.println("1 - Remover o funcionário “João” da lista.");
-      		System.out.println("2 - Os funcionários receberam 10% de aumento de salário.");
+      System.out.println("Entre com o número correspondente à opção desejada:");
+      System.out.println("1 - Remover o funcionário “João” da lista.");
+      System.out.println("2 - Os funcionários receberam 10% de aumento de salário.");
 			System.out.println("3 - Imprimir os funcionários, agrupados por função.");
 			System.out.println("4 - Imprimir os funcionários que fazem aniversário no mês 10 e 12.");
 			System.out.println("5 - Imprimir o funcionário com a maior idade.");
@@ -35,7 +35,7 @@ public class Principal {
 			System.out.println("10 - Finalizar sistema.");
 			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			System.out.print("Sua resposta: ");
-      		respCode = scanner.nextByte();
+      respCode = scanner.nextByte();
 
 			System.out.println("\nResultado:\n");
 			if (respCode == 1) {
@@ -57,22 +57,22 @@ public class Principal {
 			if (respCode == 8) System.out.println(Principal.quantosSalariosMinimosGanhaCadaFuncionario());
 			if (respCode == 9) System.out.println(Principal.funcionarios);
 			if (respCode == 10) System.out.println("Sistema finalizado.");
-    	} while (respCode != 10);
+    } while (respCode != 10);
 
 		scanner.close();
   }
 
   public static void inserirTodosOsFuncionários() {
 		Principal.funcionarios.add(new Funcionario("Maria", "18/10/2000", new BigDecimal("2009.44"), "Operador"));
-    	Principal.funcionarios.add(new Funcionario("João", "12/05/1990", new BigDecimal("2284.38"), "Operador"));
-    	Principal.funcionarios.add(new Funcionario("Caio", "02/05/1961", new BigDecimal("9836.14"), "Coordenador"));
+    Principal.funcionarios.add(new Funcionario("João", "12/05/1990", new BigDecimal("2284.38"), "Operador"));
+    Principal.funcionarios.add(new Funcionario("Caio", "02/05/1961", new BigDecimal("9836.14"), "Coordenador"));
  		Principal.funcionarios.add(new Funcionario("Miguel", "14/10/1988", new BigDecimal("19119.88"), "Diretor"));
-    	Principal.funcionarios.add(new Funcionario("Alice", "05/01/1995", new BigDecimal("2234.68"), "Recepcionista"));
-    	Principal.funcionarios.add(new Funcionario("Heitor", "19/11/1999", new BigDecimal("1582.72"), "Operador"));
-    	Principal.funcionarios.add(new Funcionario("Arthur", "31/03/1993", new BigDecimal("4071.84"), "Contador"));
-    	Principal.funcionarios.add(new Funcionario("Laura", "08/07/1994", new BigDecimal("3017.45"), "Gerente"));
-    	Principal.funcionarios.add(new Funcionario("Heloísa", "24/05/2003", new BigDecimal("1606.85"), "Eletricista"));
-    	Principal.funcionarios.add(new Funcionario("Helena", "02/09/1996", new BigDecimal("2799.93"), "Gerente"));
+    Principal.funcionarios.add(new Funcionario("Alice", "05/01/1995", new BigDecimal("2234.68"), "Recepcionista"));
+    Principal.funcionarios.add(new Funcionario("Heitor", "19/11/1999", new BigDecimal("1582.72"), "Operador"));
+    Principal.funcionarios.add(new Funcionario("Arthur", "31/03/1993", new BigDecimal("4071.84"), "Contador"));
+    Principal.funcionarios.add(new Funcionario("Laura", "08/07/1994", new BigDecimal("3017.45"), "Gerente"));
+    Principal.funcionarios.add(new Funcionario("Heloísa", "24/05/2003", new BigDecimal("1606.85"), "Eletricista"));
+    Principal.funcionarios.add(new Funcionario("Helena", "02/09/1996", new BigDecimal("2799.93"), "Gerente"));
   }
 
 	public static void removerOFuncionarioJoaoDaLista() {
