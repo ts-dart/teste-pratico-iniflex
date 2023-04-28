@@ -21,7 +21,7 @@ public class Principal {
         byte respCode = 0;
 
         do {
-            System.out.println("\n\n\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            System.out.println("\n\n\n\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             System.out.println("Entre com o número correspondente à opção desejada:");
             System.out.println("1 - Remover o funcionário “João” da lista.");
             System.out.println("2 - Os funcionários receberam 10% de aumento de salário.");
